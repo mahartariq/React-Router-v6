@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter as Router} from 'react-router-dom';
+
+//$ npm install --save history
 
 ReactDOM.render(
-  <React.StrictMode>
+<React.Fragment>
+    <Router>
     <App />
-  </React.StrictMode>,
+    </Router>
+    </React.Fragment>
+ ,
   document.getElementById('root')
 );
 

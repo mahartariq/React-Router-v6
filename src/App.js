@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Routes,Route, useNavigate} from 'react-router';
+import {Link}  from 'react-router-dom';
+import  About from './About';
+import Home  from './Home';
+import Service from './Service';
+import Products from './Products'
+import PageNot from './PageNot';
+import ProductDetail from './ProductDetail'
+import ProductHome from './ProductHome';
 
 function App() {
+  const navigate = useNavigate();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+<h1>Project 3</h1>
+<div>
+  <Link to="/">Home</Link>{" "}
+  <Link to="about">About</Link>{" "}
+  <Link to="service">Service</Link>{" "}
+  <Link to="products">Products</Link>{" "}
+  <Link to="products/mobile">Mobile</Link>{" "}
+  <Link to="products/laptop">Laptop</Link>{"     "}
+  <button onClick={()=>{
+    navigate('about')
+  }}>Contact us</button>
+</div>
+
+
+<Routes>
+  <Route path="/" element={<Home/>}></Route>
+  <Route path="about" element={<About/>}></Route>
+  <Route path="service" element={<Service/>}></Route>
+  <Route path="products" element={<Products/>}>
+  <Route path="/" element={<ProductHome/>}></Route>
+    <Route path=":productID" element={<ProductDetail/>}></Route>
+  </Route>
+  <Route path="*" element={<PageNot/>}></Route>
+
+</Routes>
+
+
     </div>
   );
 }
